@@ -8,27 +8,102 @@
 <link rel="icon" type="C:\Users\jiri.rzyman\weby\weby\favicon-32x32.png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="C:\Users\jiri.rzyman\weby\weby\favicon-16x16.png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="shortcut icon " href="./img/favicon.ico" type="image/x-icon">
-</head>
-<body>
-    <body style="background-color: #a01616;">
-    <h1 style="color: rgb(255, 246, 80);">PROPCPAKTOO</h1>
-    <p style="color: rgb(255, 246, 80);">NEJLEPŠÍ BANDA NA CZ .</p>
-    <img src="bnada.png" alt ="Banda" width = "1000" height =  "500">  
-     <h1 style="color: rgb(255, 246, 80);">The Band</h1>
-  <p style="color: rgb(255, 246, 80);">O nás mi jsme jedna z nejzajímavějších kapel na České scéně hrajeme převázně punk trochu říznutý s metalem. Už našela kapela je má výročí asi tří let.Z původní sestavy jsme zbyli jen dva Kytaristi Marek Červenka a Jiří Rzyman Doplňuje nás svojí užasnou basou Václav Jedlička a rychlími bicí Váca</p> 
-  <table style="width:100%">
-    <style>
-table, th, td {
+      <style>
+table, th, td, tr  {
   border:1px solid rgb(255, 235, 108);
 }
+body{
+  color: rgb(255, 246, 80);
+  background-color: #a01616;
+}
+.testbtn {
+  background-color: #ffef45;
+  color: white;
+  font-size: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.main-nav {
+  background-color: #f6bc00;
+  overflow: hidden;
+}
+
+.main-nav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.main-nav a:hover {
+  background-color: #ff0000;
+  color: black;
+}
+
+.contact-section {
+  background-color: #f90000;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.contact-section h2 {
+  color: #333;
+}
+
+.contact-section label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contact-section input, .contact-section textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact-section button {
+  background-color: #afaf4c;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-section button:hover {
+  background-color: #45a049;
+}
 </style>
-  <tr style="color: rgb(255, 246, 80);">
+</head>
+<body>
+
+    <nav class="main-nav" aria-label="Hlavní navigace">
+        <a href="#band">O nás</a>
+        <a href="#clenove">Členové</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <h1>PROPCPAKTOO</h1>
+    <p>NEJLEPŠÍ BANDA NA CZ .</p>
+    <img src="bnada.png" alt ="Banda" width = "1000" height =  "500">  
+     <h1 id="band">The Band</h1>
+  <p>O nás mi jsme jedna z nejzajímavějších kapel na České scéně hrajeme převázně punk trochu říznutý s metalem. Už našela kapela je má výročí asi tří let.Z původní sestavy jsme zbyli jen dva Kytaristi Marek Červenka a Jiří Rzyman Doplňuje nás svojí užasnou basou Václav Jedlička a rychlími bicí Váca</p>
+<button class="testbtn">tlačítko</button>
+  <table id="clenove" style="width:100%">
+  <tr>
     <td>Václav Jedlička</td>
     <td>Jiří Rzyman</td>
     <td>Marek Červenka</td>
     <td>Váca</td>
   </tr>
-  <tr style="color: rgb(255, 246, 80);">
+  <tr>
     <td>Zpěv , Basa</td>
     <td>Zpěv, Kytara</td>
     <td>Zpěv, Kytara</td>
@@ -36,5 +111,34 @@ table, th, td {
   </tr>
 </table>
 
+    <section id="kontakt" class="contact-section">
+        <h2>Kontaktujte nás</h2>
+        <form id="contact-form">
+            <label for="name">Jméno</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Zpráva</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit" class="testbtn">Odeslat zprávu</button>
+        </form>
+        <p id="form-status" role="status"></p>
+    </section>
+
+    <script>
+        const contactForm = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+
+        contactForm.addEventListener('submit', function (event) {
+            event.preventEventDefault();
+            const data = new FormData(contactForm);
+            formStatus.textContent = `Děkujeme, ${data.get('name')}! Zpráva byla připravena k odeslání.`;
+            contactForm.reset();
+        });
+    </script>
+
 </body>
-</html>  
+</html>
